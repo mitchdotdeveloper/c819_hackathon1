@@ -2,6 +2,11 @@
 
 # complete the project assigned to your group.  All projects MUST be in OOP
 
+- 1 person fork this repo.
+- other people in the team clone their repo
+- base your branches off the dev branch
+- make sure to make a figma and supply the link to the figma in this readme at the top.
+
 ## Teams
 
 ### Team 1
