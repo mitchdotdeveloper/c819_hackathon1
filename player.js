@@ -30,8 +30,11 @@ class Player {
 
   }
 
-  playerScoreIncrement(dieProperties) {
-    // if(this.color ===  )
+  // takes the clickedDice and checks if it can fit into board
+  // If it can fit, check if the dice color matches player color
+  // If matches, add score by the amount the dice value was
+  playerScoreIncrement(die) {
+
   }
 
 }
