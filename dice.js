@@ -10,8 +10,6 @@ class Dice {
     };
     this.gameHandler = gameHandler;
     this.clickHandler = this.clickHandler.bind(this);
-
-    $('.dice-block').on('click', this.clickHandler);
   }
   setRandomNumber() {
     this.randomNumber = Math.floor(Math.random()*6 + 1);
@@ -21,6 +19,7 @@ class Dice {
   }
   render(){
     this.singleDieDomElement = $("<div>").addClass("dice-block").text(this.randomNumber+this.randomColor);
+    $(this.singleDieDomElement).on('click', this.clickHandler);
     $(".dice-container").append(this.singleDieDomElement);
   }
   getDiceInfo() {
@@ -28,9 +27,7 @@ class Dice {
       this.currentDieValues.color = this.givesRandomColor();
       return this.currentDieValues;
   }
-  clickHandler (event) {
-    // console.log(event.currentTarget);
-    // console.log(this);
+  clickHandler () {
     this.gameHandler(this);
   }
 }
