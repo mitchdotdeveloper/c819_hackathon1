@@ -9,6 +9,7 @@ class Game {
     this.playerTurn = null;
     this.playerScoreRoundUp = [];
   }
+
   startGame(players) {
     $('.round > .current-round').text(this.roundCount);
     for (var i = 0; i < players; i++) {
