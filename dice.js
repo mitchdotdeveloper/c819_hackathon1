@@ -1,10 +1,9 @@
 class Dice {
-  constructor(diceCount){
+  constructor(){
     this.dieSides = [1, 2, 3, 4, 5, 6];
     this.diceColorArray = ["blue", "yellow", "green", "purple", "red"];
     this.randomNumber = 0;
     this.randomColor = null;
-    this.diceCount = diceCount;
     this.singleDieDomElement = null;
     this.currentDieValues = {
       "number": 0,
@@ -20,7 +19,8 @@ class Dice {
     return this.randomColor;
   }
   render(){
-    // this.allDiceDomElement = $("<div>").addClass("diceDiv");
+    this.singleDieDomElement = $("<div>").addClass("dice-block").text(this.randomNumber+this.randomColor);
+    $(".dice-container").append(this.singleDieDomElement);
   }
   getDiceInfo() {
       this.currentDieValues.number = this.givesRandomNumber();
