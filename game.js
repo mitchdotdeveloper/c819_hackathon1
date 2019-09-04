@@ -11,7 +11,8 @@ class Game {
   }
 
   startGame(players) {
-    $('.round > .current-round').text(this.roundCount);
+    $('.round > .current-round').text('Round ' + this.roundCount);
+    $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
     this.createPlayers(players);
     $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
     this.createDice(9);
@@ -62,7 +63,7 @@ class Game {
 
   roundIncrement() {
     this.roundCount++;
-    $('.round > .current-round').text(this.roundCount);
+    $('.round > .current-round').text('Round ' + this.roundCount);
     this.dice = [];
     this.createDice(9);
   }
