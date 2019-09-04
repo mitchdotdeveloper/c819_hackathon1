@@ -41,7 +41,7 @@ body {
   background-color: blue;
 }
 
-.dice-block {
+.dice-block, .dice-block > img {
   height: 10vh;
   width: 5vw;
   text-align: center;
