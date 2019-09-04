@@ -21,11 +21,12 @@ class Dice {
     this.randomColor = this.diceColorArray[Math.floor(Math.random()*this.diceColorArray.length)];
   }
   render(){
-    this.singleDieDomElement = $("<div>").addClass("dice-block").text(this.randomNumber+this.randomColor);
+    this.singleDieDomElement = $("<div>").addClass("dice-block");
     var dieFace = $('<img>').attr('src', this.face);
     this.singleDieDomElement.append(dieFace);
     this.singleDieDomElement.on('click', this.clickHandler);
     $(".dice-container").append(this.singleDieDomElement);
+    $(this.singleDieDomElement).css("background-color", this.randomColor);
   }
   getDiceInfo() {
       this.currentDieValues.number = this.randomNumber;
