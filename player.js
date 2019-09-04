@@ -31,7 +31,7 @@ class Player {
   }
 
   playerScoreIncrement(dieProperties) {
-    if(this.color ===  )
+    // if(this.color ===  )
   }
 
 }
