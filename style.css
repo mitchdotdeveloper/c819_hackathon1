@@ -40,19 +40,19 @@ body {
   background-color: purple;
   margin: 0 2px;
 }
-#p1 {
+#p0 {
   top:0;
   left:0;
 }
-#p2 {
+#p1 {
   top:0;
   right:0;
 }
-#p3 {
+#p2 {
   bottom:0;
   left: 0;
 }
-#p4 {
+#p3 {
   bottom:0;
   right:0;
 }
