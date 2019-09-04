@@ -19,7 +19,7 @@ class Dice {
   }
   render(){
     this.singleDieDomElement = $("<div>").addClass("dice-block").text(this.randomNumber+this.randomColor);
-    $(this.singleDieDomElement).on('click', this.clickHandler);
+    this.singleDieDomElement.on('click', this.clickHandler);
     $(".dice-container").append(this.singleDieDomElement);
   }
   getDiceInfo() {

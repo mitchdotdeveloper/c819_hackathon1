@@ -4,8 +4,10 @@ class Game {
     this.playerList = [];
     this.currentPlayer = 0;
     this.dice = [];
+    this.diceSelected = null;
 
     this.diceClicked = this.diceClicked.bind(this);
+    this.playerBlockClicked = this.playerBlockClicked.bind(this);
   }
 
   startGame(players) {
@@ -17,7 +19,8 @@ class Game {
   }
   createPlayers(players) {
     for (var i = 0; i < players; i++) {
-      this.playerList.push(new Player(i));
+      this.playerList.push(new Player(i, this.playerBlockClicked));
+      this.playerList[i].createBoard();
     }
   }
   createDice(numberOfDice) {
@@ -30,12 +33,20 @@ class Game {
   }
 
   diceClicked (diceObject) {
-    console.log(diceObject);
+    this.diceSelected = diceObject;
+  }
 
-    // if (this.playerList[this.currentPlayer].isValidMove(diceObject)) {
-    if (true) {
-      diceObject.singleDieDomElement.hide();
+  playerBlockClicked(playerBlockElement) {
+    if (this.diceSelected !== null) {
+      var position = $(playerBlockElement.currentTarget).text().split(',');
+      console.log(position);
+
+      // if (this.playerList[this.currentPlayer].isValidMove(this.diceSelected, position) ) {
+      //   this.diceSelected.singleDieDomElement.hide();
+      // }
     }
+
+    this.diceSelected = null;
   }
 
   roundIncrement() {

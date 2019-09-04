@@ -1,6 +1,5 @@
 class Player {
-
-  constructor(order) {
+  constructor(order, gameHandler) {
     this.playerBoard = [
       [1, 2, 3, 4, 5],
       [6, 7, 8, 9, 10],
@@ -10,11 +9,28 @@ class Player {
     this.score = 0;
     this.color = null;
     this.order = order;
+    this.gameHandler = gameHandler;
+
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   // future method to create board on DOM using jQuery
   createBoard() {
+    var board = $('<div>').addClass('player-board').attr('id', 'p'+this.order);
+    console.log(board);
+    for (var row = 0; row < 4; ++row) {
+      for (var column = 0; column < 5; ++column) {
+        var block = $('<div>').addClass('board-block').text(row+','+column);
+        block.on('click', this.clickHandler);
+        board.append(block);
+        $('.dice-container').after(board);
+      }
+    }
+  }
 
+  clickHandler (event) {
+    // this.gameHandler(this);
+    this.gameHandler(event);
   }
 
   randomColor() {
