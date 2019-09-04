@@ -6,6 +6,7 @@ class Game {
     this.playerScoreArray = [];
     this.dice = [];
   }
+
   startGame(players) {
     $('.round > .current-round').text(this.roundCount);
     $('#p1, #p2, #p3, #p4').addClass('avoid-clicks');
