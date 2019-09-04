@@ -31,6 +31,11 @@ class Game {
 
   diceClicked (diceObject) {
     console.log(diceObject);
+
+    // if (this.playerList[this.currentPlayer].isValidMove(diceObject)) {
+    if (true) {
+      diceObject.singleDieDomElement.hide();
+    }
   }
 
   roundIncrement() {
