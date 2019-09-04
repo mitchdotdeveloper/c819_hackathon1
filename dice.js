@@ -5,14 +5,14 @@ class Dice {
     this.randomNumber = 0;
     this.randomColor = null;
     this.diceCount = diceCount;
-    this.allDiceDomElement = null;
-    this.currentDiceValues = {
+    this.singleDieDomElement = null;
+    this.currentDieValues = {
       "number": 0,
       "color": ""
     };
   }
   givesRandomNumber() {
-    this.randomNumber = this.dieSides[Math.random(Math.floor()*6 + 1)];
+    this.randomNumber = this.dieSides[Math.floor(Math.random()*6 + 1)];
     return this.randomNumber;
   }
   givesRandomColor() {
@@ -23,12 +23,10 @@ class Dice {
     // this.allDiceDomElement = $("<div>").addClass("diceDiv");
   }
   getDiceInfo() {
-      this.currentDiceValues.number = this.givesRandomNumber();
-      this.currentDiceValues.color = this.givesRandomColor();
-      return this.currentDiceValues;
-    // return {color : this.randomColor, value : this.randomNumber};
+      this.currentDieValues.number = this.givesRandomNumber();
+      this.currentDieValues.color = this.givesRandomColor();
+      return this.currentDieValues;
   }
   rollDice() {
   }
 }
-// var a = new Dice();
