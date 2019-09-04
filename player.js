@@ -17,7 +17,6 @@ class Player {
   // future method to create board on DOM using jQuery
   createBoard() {
     var board = $('<div>').addClass('player-board').attr('id', 'p'+this.order);
-    console.log(board);
     for (var row = 0; row < 4; ++row) {
       for (var column = 0; column < 5; ++column) {
         var block = $('<div>').addClass('board-block').text(row+','+column);
@@ -29,7 +28,6 @@ class Player {
   }
 
   clickHandler (event) {
-    // this.gameHandler(this);
     this.gameHandler(event);
   }
 
