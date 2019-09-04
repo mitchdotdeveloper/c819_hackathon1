@@ -1,6 +1,5 @@
 class Dice {
   constructor(){
-    this.dieSides = [1, 2, 3, 4, 5, 6];
     this.diceColorArray = ["blue", "yellow", "green", "purple", "red"];
     this.randomNumber = 0;
     this.randomColor = null;
@@ -10,13 +9,11 @@ class Dice {
       "color": ""
     };
   }
-  givesRandomNumber() {
-    this.randomNumber = this.dieSides[Math.floor(Math.random()*6 + 1)];
-    return this.randomNumber;
+  setRandomNumber() {
+    this.randomNumber = Math.floor(Math.random()*6 + 1);
   }
-  givesRandomColor() {
+  setRandomColor() {
     this.randomColor = this.diceColorArray[Math.floor(Math.random()*this.diceColorArray.length)];
-    return this.randomColor;
   }
   render(){
     this.singleDieDomElement = $("<div>").addClass("dice-block").text(this.randomNumber+this.randomColor);

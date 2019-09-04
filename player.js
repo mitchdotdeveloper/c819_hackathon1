@@ -19,13 +19,19 @@ class Player {
 
   randomColor() {
     var colorArray = ["blue","red","green","purple"];
-    var color = Math.floor(Math.random() * 4);
-    this.color = colorArray[color];
+    this.color = colorArray[this.order];
   }
 
-  getColor() {
+  getPlayerColor() {
     return this.color;
   }
 
+  storeClickedDice() {
+
+  }
+
+  playerScoreIncrement(dieProperties) {
+    if(this.randomColor === )
+  }
 
 }
