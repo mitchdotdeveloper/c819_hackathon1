@@ -3,7 +3,6 @@ class Game {
     this.roundCount = 0; // start at 0 if we have a set up phase. start at 1 if we're going right into it.
     this.playerList = [];
     this.currentPlayer = 0;
-    this.playerScoreArray = [];
     this.dice = [];
   }
 
@@ -11,45 +10,47 @@ class Game {
     $('.round > .current-round').text(this.roundCount);
     $('#p1, #p2, #p3, #p4').addClass('avoid-clicks');
     this.createPlayers(players);
-    this.playerTurnTracker();
+    this.createDice(9);
     this.roundIncrement();
   }
   createPlayers(players) {
     for (var i = 0; i < players; i++) {
-      //var playerScore =
       this.playerList.push(new Player(i));
-      this.playerScoreArray.push(this.playerList[i].score);
     }
   }
   createDice(numberOfDice) {
     for (var i = 0; i < numberOfDice; i++) {
       this.dice.push(new Dice());
-      this.dice[i].render();
+      this.dice[i].setRandomNumber();
+      this.dice[i].setRandomColor();
+      //this.dice[i].render();
     }
   }
   roundIncrement() {
     this.roundCount++;
     $('.round > .current-round').text(this.roundCount);
+    this.dice = [];
   }
-  playerTurnTracker() {
-    if (this.currentPlayer === 0) {
-      $('#p1').removeClass('avoid-clicks');
+  loopPlayers() {
+    for (var i = 0; i < this.playerList.length; i++) {
+      this.playerTurnTracker(i);
+    }
+  }
+  playerTurnTracker(index) {
+    if (this.currentPlayer === '#p' + index) {
+      $('#p' + index).removeClass('avoid-clicks');
       setTimeout(function() {
         this.currentPlayer++;
 
-      }, 2000)
+      }, 30000)
     }
   }
   endGame() {
-    this.playerScoreArray.push(this.playerList[0]);
-    this.playerScoreArray.push(this.playerList[1]);
-    this.playerScoreArray.push(this.playerList[2]);
-    this.playerScoreArray.push(this.playerList[3]);
-    for (var i = 0; i < this.playerScoreArray.length; i++) {
-      var temp = this.playerScoreArray[i];
-      if (this.playerScoreArray[i] < this.playerScoreArray[i+1]) {
-        this.playerScoreArray[i] = this.playerScoreArray[i+1];
-        this.playerScoreArray[i+1] = temp;
+    for (var i = 0; i < this.playerList.length; i++) {
+      var temp = this.playerList[i];
+      if (this.playerList[i].score < this.playerList[i+1].score) {
+        this.playerList[i] = this.playerList[i+1];
+        this.playerList[i+1] = temp;
       }
       var scoreDiv = $('<div>');
       scoreDiv.text()
