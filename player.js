@@ -7,7 +7,7 @@ class Player {
       [11, 12, 13, 14, 15],
       [16, 17, 18, 19, 20]
     ];
-    this.score = null;
+    this.score = 0;
     this.color = null;
     this.order = order;
   }
@@ -18,7 +18,7 @@ class Player {
   }
 
   randomColor() {
-    var colorArray = ["blue","red","green","purple"];
+    var colorArray = ["blue","red","green","purple","yellow"];
     this.color = colorArray[this.order];
   }
 
@@ -31,7 +31,7 @@ class Player {
   }
 
   playerScoreIncrement(dieProperties) {
-    if(this.randomColor === )
+    if(this.color ===  )
   }
 
 }
