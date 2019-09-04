@@ -1,5 +1,5 @@
 class Dice {
-  constructor(){
+  constructor(gameHandler){
     this.diceColorArray = ["blue", "yellow", "green", "purple", "red"];
     this.randomNumber = 0;
     this.randomColor = null;
@@ -8,6 +8,10 @@ class Dice {
       "number": 0,
       "color": ""
     };
+    this.gameHandler = gameHandler;
+    this.clickHandler = this.clickHandler.bind(this);
+
+    $('.dice-block').on('click', this.clickHandler);
   }
   setRandomNumber() {
     this.randomNumber = Math.floor(Math.random()*6 + 1);
@@ -24,6 +28,9 @@ class Dice {
       this.currentDieValues.color = this.givesRandomColor();
       return this.currentDieValues;
   }
-  rollDice() {
+  clickHandler (event) {
+    // console.log(event.currentTarget);
+    // console.log(this);
+    this.gameHandler(this);
   }
 }

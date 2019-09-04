@@ -4,6 +4,8 @@ class Game {
     this.playerList = [];
     this.currentPlayer = 0;
     this.dice = [];
+
+    this.diceClicked = this.diceClicked.bind(this);
   }
 
   startGame(players) {
@@ -20,12 +22,17 @@ class Game {
   }
   createDice(numberOfDice) {
     for (var i = 0; i < numberOfDice; i++) {
-      this.dice.push(new Dice());
+      this.dice.push(new Dice(this.diceClicked));
       this.dice[i].setRandomNumber();
       this.dice[i].setRandomColor();
-      //this.dice[i].render();
+      this.dice[i].render();
     }
   }
+
+  diceClicked (diceObject) {
+    console.log(diceObject);
+  }
+
   roundIncrement() {
     this.roundCount++;
     $('.round > .current-round').text(this.roundCount);
