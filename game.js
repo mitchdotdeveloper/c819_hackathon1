@@ -8,7 +8,7 @@ class Game {
 
   startGame(players) {
     $('.round > .current-round').text(this.roundCount);
-    $('#p1, #p2, #p3, #p4').addClass('avoid-clicks');
+    $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
     this.createPlayers(players);
     this.createDice(9);
     this.roundIncrement();
