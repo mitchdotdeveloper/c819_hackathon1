@@ -6,8 +6,9 @@ class Game {
     this.player2Score = null;
     this.player3Score = null;
     this.player4Score = null;
-    this.playerTurn = null;
-    this.playerScoreRoundUp = [];
+    this.currentPlayer = 0;
+    this.playerScoreArray = [];
+    this.dice = [];
   }
   startGame(players) {
     $('.round > .current-round').text(this.roundCount);
@@ -16,6 +17,12 @@ class Game {
     }
     this.playerTurnTracker();
     this.roundIncrement();
+  }
+  createDice(numberOfDice) {
+    for (var i = 0; i < numberOfDice; i++) {
+      this.dice.push(new Dice());
+      this.dice[i].render();
+    }
   }
   roundIncrement() {
     this.roundCount++;
@@ -26,9 +33,8 @@ class Game {
   //     this.playerScore += dieValue;
   //   }
   // }
-  playerTurnTracker(index) {
-    this.playerTurn = index;
-    if (this.playerTurn === this.playerList[index]) {
+  playerTurnTracker() {
+    if (this.currentPlayer === 0) {
       $('#p2, #p3, #p4').addClass('avoid-clicks');
       setTimeout(function() {
         index++;
@@ -36,17 +42,16 @@ class Game {
       }, 2000)
     }
   }
-  endGame(playerScoreArray) {
-    this.playerScoreRoundUp.push(this.playerList[0]);
-    this.playerScoreRoundUp.push(this.playerList[1]);
-    this.playerScoreRoundUp.push(this.playerList[2]);
-    this.playerScoreRoundUp.push(this.playerList[3]);
-    var playerScoreArray = this.playerScoreRoundUp;
-    for (var i = 0; i < playerScoreArray.length; i++) {
-      var temp = playerScoreArray[i];
-      if (playerScoreArray[i] < playerScoreArray[i+1]) {
-        playerScoreArray[i] = playerScoreArray[i+1];
-        playerScoreArray[i+1] = temp;
+  endGame() {
+    this.playerScoreArray.push(this.playerList[0]);
+    this.playerScoreArray.push(this.playerList[1]);
+    this.playerScoreArray.push(this.playerList[2]);
+    this.playerScoreArray.push(this.playerList[3]);
+    for (var i = 0; i < this.playerScoreArray.length; i++) {
+      var temp = this.playerScoreArray[i];
+      if (this.playerScoreArray[i] < this.playerScoreArray[i+1]) {
+        this.playerScoreArray[i] = this.playerScoreArray[i+1];
+        this.playerScoreArray[i+1] = temp;
       }
       var scoreDiv = $('<div>');
       scoreDiv.text()
