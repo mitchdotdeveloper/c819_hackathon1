@@ -53,6 +53,7 @@ class Game {
     this.roundCount++;
     $('.round > .current-round').text(this.roundCount);
     this.dice = [];
+    this.createDice(9);
   }
   loopPlayers() {
     for (var i = 0; i < this.playerList.length; i++) {
