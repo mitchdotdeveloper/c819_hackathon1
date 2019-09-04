@@ -14,6 +14,7 @@ class Game {
     $('.round > .current-round').text('Round ' + this.roundCount);
     $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
     this.createPlayers(players);
+    $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
     this.createDice(9);
     this.roundIncrement();
   }
@@ -32,18 +33,29 @@ class Game {
     }
   }
 
-  diceClicked (diceObject) {
+  diceClicked(diceObject) {
     this.diceSelected = diceObject;
+    var newDiv = $('<div>').addClass('die')
+    $('.player-board').append()
   }
 
   playerBlockClicked(playerBlockElement) {
     if (this.diceSelected !== null) {
       var position = $(playerBlockElement.currentTarget).text().split(',');
+      var boardTarget = $(playerBlockElement.currentTarget);
       console.log(position);
 
-      // if (this.playerList[this.currentPlayer].isValidMove(this.diceSelected, position) ) {
-      //   this.diceSelected.singleDieDomElement.hide();
-      // }
+      if (true) {//if (this.playerList[this.currentPlayer].isValidMove(this.diceSelected, position) ) {
+        this.diceSelected.singleDieDomElement.hide();
+        boardTarget.css({
+          'background-image': 'url(' + this.diceSelected.face +')',
+          'background-color': this.diceSelected.randomColor
+        });
+        boardTarget.text(this.diceSelected.randomNumber);
+        } else {
+        console.log('invalid move');
+        return;
+      }
     }
 
     this.diceSelected = null;
@@ -55,6 +67,9 @@ class Game {
     this.dice = [];
     this.createDice(9);
   }
+  // nextPlayer() {
+  //   if ()
+  // }
   loopPlayers() {
     for (var i = 0; i < this.playerList.length; i++) {
       this.playerTurnTracker(i);
@@ -77,7 +92,7 @@ class Game {
         this.playerList[i+1] = temp;
       }
       var scoreDiv = $('<div>');
-      scoreDiv.text()
+      scoreDiv.text();
     }
   }
 }
