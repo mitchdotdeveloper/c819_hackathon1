@@ -23,8 +23,8 @@ class Dice {
     $(".dice-container").append(this.singleDieDomElement);
   }
   getDiceInfo() {
-      this.currentDieValues.number = this.givesRandomNumber();
-      this.currentDieValues.color = this.givesRandomColor();
+      this.currentDieValues.number = this.randomNumber;
+      this.currentDieValues.color = this.randomColor;
       return this.currentDieValues;
   }
   clickHandler () {
