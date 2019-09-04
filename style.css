@@ -23,6 +23,7 @@ body {
 .board-block {
   width:100px;
   height:75px;
+  font-size: 0;
   background-color:black;
   margin:2px;
 }
