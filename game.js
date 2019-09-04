@@ -2,21 +2,23 @@ class Game {
   constructor() {
     this.roundCount = 0; // start at 0 if we have a set up phase. start at 1 if we're going right into it.
     this.playerList = [];
-    this.player1Score = null;
-    this.player2Score = null;
-    this.player3Score = null;
-    this.player4Score = null;
     this.currentPlayer = 0;
     this.playerScoreArray = [];
     this.dice = [];
   }
   startGame(players) {
     $('.round > .current-round').text(this.roundCount);
-    for (var i = 0; i < players; i++) {
-      this.playerList.push(new Player(i));
-    }
+    $('#p1, #p2, #p3, #p4').addClass('avoid-clicks');
+    this.createPlayers(players);
     this.playerTurnTracker();
     this.roundIncrement();
+  }
+  createPlayers(players) {
+    for (var i = 0; i < players; i++) {
+      //var playerScore =
+      this.playerList.push(new Player(i));
+      this.playerScoreArray.push(this.playerList[i].score);
+    }
   }
   createDice(numberOfDice) {
     for (var i = 0; i < numberOfDice; i++) {
@@ -28,16 +30,11 @@ class Game {
     this.roundCount++;
     $('.round > .current-round').text(this.roundCount);
   }
-  // playerScoreIncrement(player, color, dieValue) {
-  //   if (this.dice.color === this.player.dice.color) {
-  //     this.playerScore += dieValue;
-  //   }
-  // }
   playerTurnTracker() {
     if (this.currentPlayer === 0) {
-      $('#p2, #p3, #p4').addClass('avoid-clicks');
+      $('#p1').removeClass('avoid-clicks');
       setTimeout(function() {
-        index++;
+        this.currentPlayer++;
 
       }, 2000)
     }
