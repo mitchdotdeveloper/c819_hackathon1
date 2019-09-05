@@ -8,6 +8,7 @@ class Game {
     this.playerOrder = true;
     this.diceClicked = this.diceClicked.bind(this);
     this.playerBlockClicked = this.playerBlockClicked.bind(this);
+    this.turnsCompleted = 0;
   }
   startGame(players) {
     $('.round > .current-round').text('Round ' + this.roundCount);
@@ -42,7 +43,7 @@ class Game {
 
       if (this.playerList[this.currentPlayer-1].isValid(this.diceSelected, position) ) {
         this.diceSelected.singleDieDomElement.hide();
-        this.playerList[this.currentPlayer-1].playerScoreIncrement(this.diceSelected);
+        this.playerList[this.currentPlayer].playerScoreIncrement(this.diceSelected);
         boardTarget.css({
           'background-image': 'url(' + this.diceSelected.face +')',
           'background-color': this.diceSelected.randomColor
@@ -64,9 +65,10 @@ class Game {
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.dice = [];
     this.createDice(9);
-    this.currentPlayer = 0;
+    this.currentPlayer = -1;
     this.diceSelected = null;
     this.playerOrder = true;
+    this.turnsCompleted = 0;
     this.playerTurnTracker();
   }
   playerTurnTracker() {
@@ -74,31 +76,21 @@ class Game {
     $('#p0, #p1, #p2, #p3').css({
       border: 'none'
     })
+    this.currentPlayer++;
     if (this.currentPlayer === 4) {
-      this.playerOrder = false;
+      this.currentPlayer = (this.currentPlayer) % 4;
+      this.turnsCompleted++;
     }
-    if (!this.playerOrder) {
-      this.currentPlayer--;
-      $('#p' + this.currentPlayer).removeClass('avoid-clicks');
-      $('#p' + this.currentPlayer).css({
-        border: '2px solid black'
-      });
-      if (this.currentPlayer === 0) {
-        this.playerOrder = true;
-        if (this.roundCount === 10) {
-          this.endGame();
-        } else {
-          this.roundIncrement();
-        }
-      }
-    } else {
-      $('#p' + this.currentPlayer).removeClass('avoid-clicks');
-      $('#p' + this.currentPlayer).css({
-        border: '2px solid black'
-      });
-      this.currentPlayer++;
+    if (this.roundCount === 10) {
+      this.endGame();
+    } else if (this.turnsCompleted === 2) {
+      this.roundIncrement();
     }
-  }
+    $('#p' + this.currentPlayer).removeClass('avoid-clicks');
+    $('#p' + this.currentPlayer).css({
+      border: '2px solid black'
+      })
+    }
   pass() {
     this.playerTurnTracker();
   }
