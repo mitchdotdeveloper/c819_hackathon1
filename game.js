@@ -116,5 +116,6 @@ class Game {
       modal.append(score);
     }
     $('.game-container').after(modal);
+    $('.game-container').addClass('avoid-clicks');
   }
 }
