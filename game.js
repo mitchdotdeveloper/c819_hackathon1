@@ -40,7 +40,7 @@ class Game {
       var position = $(playerBlockElement.currentTarget).text().split(',');
       var boardTarget = $(playerBlockElement.currentTarget);
 
-      if (true) {//if (this.playerList[this.currentPlayer].isValidMove(this.diceSelected, position) ) {
+      if (true) {//if (this.playerList[this.currentPlayer].isValid(this.diceSelected, position) ) {
         this.diceSelected.singleDieDomElement.hide();
         this.playerList[this.currentPlayer-1].playerScoreIncrement(this.diceSelected);
         boardTarget.css({
@@ -48,6 +48,7 @@ class Game {
           'background-color': this.diceSelected.randomColor
         });
         boardTarget.text(this.diceSelected.randomNumber);
+        this.playerTurnTracker();
         } else {
           console.log('invalid move');
           return;
