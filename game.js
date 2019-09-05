@@ -47,7 +47,7 @@ class Game {
         this.diceSelected.singleDieDomElement.hide();
         boardTarget.css({
           'background-image': 'url(' + this.diceSelected.face +')',
-          'background-color': this.diceSelected.randomColor
+          'background-color': this.diceSelected.randomColor,
         });
         boardTarget.text(this.diceSelected.randomNumber);
         } else {
