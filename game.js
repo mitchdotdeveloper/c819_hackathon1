@@ -41,7 +41,7 @@ class Game {
       var position = $(playerBlockElement.currentTarget).text().split(',');
       var boardTarget = $(playerBlockElement.currentTarget);
 
-      if (true) {//if (this.playerList[this.currentPlayer].isValid(this.diceSelected, position) ) {
+      if (this.playerList[this.currentPlayer].isValid(this.diceSelected, position) ) {
         this.diceSelected.singleDieDomElement.hide();
         this.playerList[this.currentPlayer].playerScoreIncrement(this.diceSelected);
         boardTarget.css({
@@ -86,7 +86,6 @@ class Game {
     } else if (this.turnsCompleted === 2) {
       this.roundIncrement();
     }
-    // debugger;
     $('#p' + this.currentPlayer).removeClass('avoid-clicks');
     $('#p' + this.currentPlayer).css({
       border: '2px solid black'
