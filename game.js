@@ -32,8 +32,6 @@ class Game {
 
   diceClicked(diceObject) {
     this.diceSelected = diceObject;
-    var newDiv = $('<div>').addClass('die')
-    $('.player-board').append()
   }
 
   playerBlockClicked(playerBlockElement) {
