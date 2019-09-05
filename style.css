@@ -1,4 +1,7 @@
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url("./images/green.png");
   width: 100%;
   height: 100%;
@@ -15,26 +18,22 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-
-
-  /* background-color:red; */
 }
 
 .player-board {
-  /* background-color: url("") */
   position: absolute;
   display:flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  /* width: 600px;
-  height: 340px; */
+  height: 340px;
   height: 40vh;
   width: 40vw;
-  background-color: chartreuse;
+  background-color: rgba(255, 255, 255, 0.564);
 }
 
 .board-block {
+  display: flex;
   height: 8vh;
   width: 7vw;
   font-size: 0;
@@ -55,10 +54,7 @@ body {
 .dice-block, .dice-block > img {
   height: 10vh;
   width: 5vw;
-  /* font-size: 0;
-  text-align: center; */
   line-height: 10vh;
-  /* background-color: purple; */
 }
 
 #p0 {
@@ -93,4 +89,15 @@ body {
 
 .avoid-clicks {
   pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 33.33vh;
+  width: 33.33vw;
+  background-color: aqua;
 }
