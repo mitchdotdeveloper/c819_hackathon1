@@ -71,7 +71,6 @@ class Game {
     this.playerTurnTracker();
   }
   playerTurnTracker() {
-    //debugger;
     $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
     if (this.currentPlayer === 4) {
       this.playerOrder = false;
@@ -91,21 +90,14 @@ class Game {
       $('#p' + this.currentPlayer).removeClass('avoid-clicks');
       this.currentPlayer++;
     }
-    // if (this.currentPlayer === 0) {
-      // $('#p' + index).removeClass('avoid-clicks');
-      // setTimeout(function() {
-      //   this.currentPlayer++;
-      // }, 30000)
   }
   endGame() {
-    for (var i = 0; i < this.playerList.length; i++) {
-      var temp = this.playerList[i];
-      if (this.playerList[i].score < this.playerList[i+1].score) {
-        this.playerList[i] = this.playerList[i+1];
-        this.playerList[i+1] = temp;
-      }
-      var scoreDiv = $('<div>');
-      scoreDiv.text();
-    }
+
+    this.playerList.sort(function (a, b) {
+      return b.score - a.score;
+    });
+    console.log(this.playerList);
+
+    // Create modal showing all scores
   }
 }
