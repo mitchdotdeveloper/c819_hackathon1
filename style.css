@@ -5,7 +5,6 @@ body {
   margin: 0;
   background-size: contain;
   background-repeat: repeat-y;
-
 }
 
 .game-container {
@@ -15,23 +14,19 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-
-
-  /* background-color:red; */
 }
 
 .player-board {
-  /* background-color: url("") */
+  opacity: 0.9;
   position: absolute;
   display:flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  /* width: 600px;
-  height: 340px; */
   height: 40vh;
   width: 40vw;
-  background-color: chartreuse;
+  background-color: rgba(255, 255, 255, 0.774);
+  border-radius: 7px;
 }
 
 .board-block {
@@ -41,6 +36,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-color:black;
+  border-radius: 7px;
 }
 
 .dice-container {
@@ -49,16 +45,15 @@ body {
   align-items: center;
   height: 15vh;
   width: 50vw;
-  background-color: blue;
+  background-color: rgba(0, 0, 0, 0.363);
+  border-radius: 7px;
 }
 
 .dice-block, .dice-block > img {
   height: 10vh;
   width: 5vw;
-  /* font-size: 0;
-  text-align: center; */
+  border-radius: 7px;
   line-height: 10vh;
-  /* background-color: purple; */
 }
 
 #p0 {
