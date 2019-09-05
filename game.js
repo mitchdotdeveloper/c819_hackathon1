@@ -92,35 +92,6 @@ class Game {
       border: '2px solid black'
       })
     }
-  //   $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
-  //   $('#p0, #p1, #p2, #p3').css({
-  //     border: 'none'
-  //   })
-  //   debugger;
-  //   if (this.currentPlayer === 4) {
-  //     this.playerOrder = false;
-  //   }
-  //   if (!this.playerOrder) {
-  //     this.currentPlayer--;
-  //     $('#p' + this.currentPlayer).removeClass('avoid-clicks');
-  //     $('#p' + this.currentPlayer).css({
-  //       border: '2px solid black'
-  //     });
-  //     if (this.currentPlayer === 0) {
-  //       this.playerOrder = true;
-  //       if (this.roundCount === 10) {
-  //         this.endGame();
-  //       } else {
-  //         this.roundIncrement();
-  //       }
-  //     }
-  //   } else {
-  //     $('#p' + this.currentPlayer).removeClass('avoid-clicks');
-  //     $('#p' + this.currentPlayer).css({
-  //       border: '2px solid black'
-  //     });
-  //     this.currentPlayer++;
-  //   }
   pass() {
     this.playerTurnTracker();
   }
