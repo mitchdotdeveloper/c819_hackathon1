@@ -10,7 +10,7 @@ class Game {
     this.diceClicked = this.diceClicked.bind(this);
     this.playerBlockClicked = this.playerBlockClicked.bind(this);
     this.turnsCompleted = 0;
-    this.playerColorArray = ['blue', 'red', 'green', 'yellow', 'purple'];
+    this.playerColorArray = ['blue', 'red', 'green', '#f7be16', 'purple'];
   }
   startGame(players) {
     $('.round > .current-round').text('Round ' + this.roundCount);
@@ -123,7 +123,7 @@ class Game {
     }
     $('#p' + this.currentPlayer).removeClass('avoid-clicks');
     $('#p' + this.currentPlayer).css({
-      border: '8px solid yellow'
+      border: '8px solid ' + this.playerList[this.currentPlayer].color
       })
     }
   pass() {
