@@ -39,7 +39,9 @@ class Dice {
       return this.currentDieValues;
   }
 
-  clickHandler () {
-    this.gameHandler(this);
+  clickHandler (event) {
+    // $(event.currentTarget).css("border", "5px yellow solid");
+
+    this.gameHandler(this,event);
   }
 }

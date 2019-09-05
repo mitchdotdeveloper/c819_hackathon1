@@ -5,6 +5,7 @@ class Game {
     this.currentPlayer = 0;
     this.dice = [];
     this.diceSelected = null;
+    this.diceElement = null;
     this.playerOrder = true;
     this.diceClicked = this.diceClicked.bind(this);
     this.playerBlockClicked = this.playerBlockClicked.bind(this);
@@ -32,8 +33,14 @@ class Game {
     }
   }
 
-  diceClicked(diceObject) {
+  diceClicked(diceObject,diceElement) {
+    console.log(this.diceSelected);
+    if(this.diceElement != null) {
+      $(this.diceElement.currentTarget).removeClass("show-border");
+    }
     this.diceSelected = diceObject;
+    this.diceElement = diceElement;
+    $(this.diceElement.currentTarget).addClass("show-border");
   }
 
   playerBlockClicked(playerBlockElement) {
@@ -76,11 +83,16 @@ class Game {
     $('#p0, #p1, #p2, #p3').css({
       border: 'none'
     })
+
     this.currentPlayer++;
+
     if (this.currentPlayer === 4) {
       this.currentPlayer = (this.currentPlayer) % 4;
       this.turnsCompleted++;
+
     }
+    $(".current-player").text("PLAYER " + (this.currentPlayer + 1) + " TURN");
+
     if (this.roundCount === 10) {
       this.endGame();
     } else if (this.turnsCompleted === 2) {
@@ -88,7 +100,7 @@ class Game {
     }
     $('#p' + this.currentPlayer).removeClass('avoid-clicks');
     $('#p' + this.currentPlayer).css({
-      border: '2px solid black'
+      border: '8px solid yellow'
       })
     }
   pass() {
@@ -117,4 +129,5 @@ class Game {
     $('.game-container').after(modal);
     $('.game-container').addClass('avoid-clicks');
   }
+
 }
