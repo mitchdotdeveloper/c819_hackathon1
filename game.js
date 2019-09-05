@@ -76,11 +76,16 @@ class Game {
     $('#p0, #p1, #p2, #p3').css({
       border: 'none'
     })
+
     this.currentPlayer++;
+
     if (this.currentPlayer === 4) {
       this.currentPlayer = (this.currentPlayer) % 4;
       this.turnsCompleted++;
+
     }
+    $(".current-player").text("PLAYER " + (this.currentPlayer + 1) + " TURN");
+
     if (this.roundCount === 10) {
       this.endGame();
     } else if (this.turnsCompleted === 2) {
@@ -88,7 +93,7 @@ class Game {
     }
     $('#p' + this.currentPlayer).removeClass('avoid-clicks');
     $('#p' + this.currentPlayer).css({
-      border: '2px solid black'
+      border: '8px solid yellow'
       })
     }
   pass() {

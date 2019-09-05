@@ -131,3 +131,7 @@ button:hover {
   width: 33.33vw;
   background-color: aqua;
 }
+
+.current-player {
+  font-size: 20px;
+}
