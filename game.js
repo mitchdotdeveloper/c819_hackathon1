@@ -93,10 +93,12 @@ class Game {
     }
     $(".current-player").text("PLAYER " + (this.currentPlayer + 1) + " TURN");
 
-    if (this.roundCount === 10) {
-      this.endGame();
-    } else if (this.turnsCompleted === 2) {
-      this.roundIncrement();
+    if (this.turnsCompleted === 2) {
+      if (this.roundCount === 10) {
+        this.endGame();
+      } else {
+        this.roundIncrement();
+      }
     }
     $('#p' + this.currentPlayer).removeClass('avoid-clicks');
     $('#p' + this.currentPlayer).css({
