@@ -38,6 +38,8 @@ body {
   height: 8vh;
   width: 7vw;
   font-size: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-color:black;
 }
 
