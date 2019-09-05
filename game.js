@@ -18,6 +18,7 @@ class Game {
   createPlayers(players) {
     for (var i = 0; i < players; i++) {
       this.playerList.push(new Player(i, this.playerBlockClicked));
+      this.playerList[i].randomColor();
       this.playerList[i].createBoard();
     }
   }
@@ -38,19 +39,19 @@ class Game {
     if (this.diceSelected !== null) {
       var position = $(playerBlockElement.currentTarget).text().split(',');
       var boardTarget = $(playerBlockElement.currentTarget);
-      console.log(position);
 
       if (true) {//if (this.playerList[this.currentPlayer].isValidMove(this.diceSelected, position) ) {
         this.diceSelected.singleDieDomElement.hide();
+        this.playerList[this.currentPlayer-1].playerScoreIncrement(this.diceSelected);
         boardTarget.css({
           'background-image': 'url(' + this.diceSelected.face +')',
           'background-color': this.diceSelected.randomColor
         });
         boardTarget.text(this.diceSelected.randomNumber);
         } else {
-        console.log('invalid move');
-        return;
-      }
+          console.log('invalid move');
+          return;
+        }
     }
 
     this.diceSelected = null;

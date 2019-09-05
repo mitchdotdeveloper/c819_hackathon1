@@ -48,9 +48,9 @@ class Player {
   // If it can fit, check if the dice color matches player color
   // If matches, add score by the amount the dice value was
   playerScoreIncrement(die) {
-    // if (die.randomColor === this.color) {
-    //   this.score += die.randomNumber;
-    // }
+    if (die.randomColor === this.color) {
+      this.score += die.randomNumber;
+    }
   }
 
 }
