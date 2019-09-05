@@ -31,9 +31,8 @@ class Player {
     this.gameHandler(event);
   }
 
-  randomColor() {
-    var colorArray = ["blue","red","green","purple","yellow"];
-    this.color = colorArray[this.order];
+  randomColor(arr) {
+    this.color = arr.pop();
   }
 
   getPlayerColor() {
@@ -127,5 +126,4 @@ class Player {
       this.score += die.randomNumber;
     }
   }
-
 }
