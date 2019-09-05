@@ -146,7 +146,7 @@ button:hover {
 }
 
 .modalContent > span:nth-child(1) {
-  font-size: 8vmin;
+  font-size: 7vmin;
   font-style: italic;
   font-weight: bold;
 }
