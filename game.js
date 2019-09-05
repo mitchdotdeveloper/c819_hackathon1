@@ -5,6 +5,7 @@ class Game {
     this.currentPlayer = 0;
     this.dice = [];
     this.diceSelected = null;
+    this.diceElement = null;
     this.playerOrder = true;
     this.diceClicked = this.diceClicked.bind(this);
     this.playerBlockClicked = this.playerBlockClicked.bind(this);
@@ -32,8 +33,14 @@ class Game {
     }
   }
 
-  diceClicked(diceObject) {
+  diceClicked(diceObject,diceElement) {
+    console.log(this.diceSelected);
+    if(this.diceElement != null) {
+      $(this.diceElement.currentTarget).removeClass("show-border");
+    }
     this.diceSelected = diceObject;
+    this.diceElement = diceElement;
+    $(this.diceElement.currentTarget).addClass("show-border");
   }
 
   playerBlockClicked(playerBlockElement) {
@@ -115,4 +122,5 @@ class Game {
     $('.game-container').after(modal);
     $('.game-container').addClass('avoid-clicks');
   }
+
 }

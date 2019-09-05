@@ -134,4 +134,10 @@ button:hover {
 
 .current-player {
   font-size: 20px;
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.show-border {
+  border: 5px solid yellow;
 }
