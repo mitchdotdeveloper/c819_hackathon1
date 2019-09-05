@@ -101,12 +101,19 @@ class Game {
 
     // Create modal showing all scores
     var modal = $('<div>').addClass('modal');
+    var modalShowContent = $('<div>').addClass('modalContent hidden');
+    var showScoreButton = $('<button>').addClass('showScores').text('Show Scores');
+    modal.append(showScoreButton);
+    showScoreButton.click(function () {
+      modalShowContent.removeClass('hidden');
+    })
     for (var player = 0; player < this.playerList.length; ++player) {
       var score = $('<span>').text('Player ' + (this.playerList[player].order+1) +
                                    ' finished with ' + this.playerList[player].score +
                                    'pts');
-      modal.append(score);
+      modalShowContent.append(score);
     }
+    modal.append(modalShowContent);
     $('.game-container').after(modal);
     $('.game-container').addClass('avoid-clicks');
   }
