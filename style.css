@@ -8,7 +8,6 @@ body {
   margin: 0;
   background-size: contain;
   background-repeat: repeat-y;
-
 }
 
 .game-container {
@@ -26,10 +25,10 @@ body {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  height: 340px;
   height: 40vh;
   width: 40vw;
-  background-color: rgba(255, 255, 255, 0.564);
+  background-color: rgba(255, 255, 255, 0.774);
+  border-radius: 7px;
 }
 
 .board-block {
@@ -40,6 +39,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-color:black;
+  border-radius: 7px;
 }
 
 .dice-container {
@@ -48,13 +48,14 @@ body {
   align-items: center;
   height: 15vh;
   width: 50vw;
-  background-color: blue;
+  background-color: rgba(0, 0, 0, 0.363);
+  border-radius: 7px;
 }
 
 .dice-block, .dice-block > img {
   height: 10vh;
   width: 5vw;
-  line-height: 10vh;
+  border-radius: 7px;
 }
 
 #p0 {
