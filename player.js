@@ -47,6 +47,26 @@ class Player {
   isValid (dice, pos) {
     var row = parseInt(pos[0]);
     var column = parseInt(pos[1]);
+    var firstMove = true;
+
+    for (var rowIndex = 0; rowIndex < this.playerBoard.length; ++rowIndex) {
+      for (var columnIndex = 0; columnIndex < this.playerBoard[rowIndex].length; ++columnIndex) {
+        if (this.playerBoard[rowIndex][columnIndex] !== 0) {
+          firstMove = false;
+          break;
+        }
+      }
+      if (!firstMove) {
+        break;
+      }
+    }
+
+    if (firstMove) {
+      if ( (row !== 0 && row !== this.playerBoard.length-1) &&
+           (column !== 0 && column !== this.playerBoard[row].length-1) ) {
+        return false;
+      }
+    }
 
     if (this.playerBoard[row][column] !== 0) {
       return false;
