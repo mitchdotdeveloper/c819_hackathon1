@@ -1,6 +1,6 @@
 class Dice {
   constructor(gameHandler){
-    this.diceColorArray = ["blue", "yellow", "green", "purple", "red"];
+    this.diceColorArray = ["blue", "#f7be16", "green", "purple", "red"];
     this.randomNumber = 0;
     this.randomColor = null;
     this.face = '';
@@ -13,13 +13,16 @@ class Dice {
     this.gameHandler = gameHandler;
     this.clickHandler = this.clickHandler.bind(this);
   }
+
   setRandomNumber() {
     this.randomNumber = Math.floor(Math.random()*6 + 1);
     this.face = 'images/' + this.randomNumber + '.png';
   }
+
   setRandomColor() {
     this.randomColor = this.diceColorArray[Math.floor(Math.random()*this.diceColorArray.length)];
   }
+
   render(){
     this.singleDieDomElement = $("<div>").addClass("dice-block");
     var dieFace = $('<img>').attr('src', this.face);
@@ -28,12 +31,14 @@ class Dice {
     $(".dice-container").append(this.singleDieDomElement);
     $(this.singleDieDomElement).css("background-color", this.randomColor);
   }
+
   getDiceInfo() {
       this.currentDieValues.number = this.randomNumber;
       this.currentDieValues.color = this.randomColor
       this.currentDieValues.face = this.face;
       return this.currentDieValues;
   }
+
   clickHandler () {
     this.gameHandler(this);
   }

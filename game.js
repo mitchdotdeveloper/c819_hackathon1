@@ -9,7 +9,6 @@ class Game {
     this.diceClicked = this.diceClicked.bind(this);
     this.playerBlockClicked = this.playerBlockClicked.bind(this);
   }
-
   startGame(players) {
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.createPlayers(players);
@@ -47,7 +46,7 @@ class Game {
         this.diceSelected.singleDieDomElement.hide();
         boardTarget.css({
           'background-image': 'url(' + this.diceSelected.face +')',
-          'background-color': this.diceSelected.randomColor,
+          'background-color': this.diceSelected.randomColor
         });
         boardTarget.text(this.diceSelected.randomNumber);
         } else {
