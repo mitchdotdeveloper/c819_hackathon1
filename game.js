@@ -14,7 +14,7 @@ class Game {
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.createPlayers(players);
     $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
-    this.roundIncrement();
+     this.roundIncrement();
   }
   createPlayers(players) {
     for (var i = 0; i < players; i++) {
