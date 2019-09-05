@@ -51,11 +51,41 @@ body {
   background-color: rgba(0, 0, 0, 0.363);
   border-radius: 7px;
 }
-
+.dice-block{
+  position: relative;
+}
 .dice-block, .dice-block > img {
   height: 10vh;
   width: 5vw;
   border-radius: 7px;
+}
+.game-logo{
+  height: 45%;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+
+.current-round {
+  font-size: 2.7rem;
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+button {
+font-size: 1rem;
+height: 7%;
+width: 12%;
+margin-top: 30px;
+font-weight: bold;
+font-family: 'Ubuntu', sans-serif;
+border-radius: 7px;
+background-color: white;
+opacity: 0.9;
+}
+
+button:hover {
+  background-color: #f3fe7e;
 }
 
 #p0 {
