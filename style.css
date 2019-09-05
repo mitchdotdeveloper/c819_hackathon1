@@ -131,3 +131,13 @@ button:hover {
   width: 33.33vw;
   background-color: aqua;
 }
+
+.current-player {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.show-border {
+  border: 5px solid yellow;
+}
