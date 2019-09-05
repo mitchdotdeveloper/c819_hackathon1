@@ -13,6 +13,7 @@ class Game {
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.createPlayers(players);
     this.roundIncrement();
+    $('.pass').click(this.pass.bind(this));
   }
   createPlayers(players) {
     for (var i = 0; i < players; i++) {
@@ -70,12 +71,18 @@ class Game {
   }
   playerTurnTracker() {
     $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
+    $('#p0, #p1, #p2, #p3').css({
+      border: 'none'
+    })
     if (this.currentPlayer === 4) {
       this.playerOrder = false;
     }
     if (!this.playerOrder) {
       this.currentPlayer--;
       $('#p' + this.currentPlayer).removeClass('avoid-clicks');
+      $('#p' + this.currentPlayer).css({
+        border: '2px solid black'
+      });
       if (this.currentPlayer === 0) {
         this.playerOrder = true;
         if (this.roundCount === 10) {
@@ -86,8 +93,14 @@ class Game {
       }
     } else {
       $('#p' + this.currentPlayer).removeClass('avoid-clicks');
+      $('#p' + this.currentPlayer).css({
+        border: '2px solid black'
+      });
       this.currentPlayer++;
     }
+  }
+  pass() {
+    this.playerTurnTracker();
   }
   endGame() {
     this.playerList.sort(function (a, b) {
