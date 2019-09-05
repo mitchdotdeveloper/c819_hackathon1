@@ -1,4 +1,7 @@
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url("./images/green.png");
   width: 100%;
   height: 100%;
@@ -17,7 +20,6 @@ body {
 }
 
 .player-board {
-  opacity: 0.9;
   position: absolute;
   display:flex;
   justify-content: space-evenly;
@@ -30,6 +32,7 @@ body {
 }
 
 .board-block {
+  display: flex;
   height: 8vh;
   width: 7vw;
   font-size: 0;
@@ -53,7 +56,6 @@ body {
   height: 10vh;
   width: 5vw;
   border-radius: 7px;
-  line-height: 10vh;
 }
 
 #p0 {
@@ -88,4 +90,15 @@ body {
 
 .avoid-clicks {
   pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 33.33vh;
+  width: 33.33vw;
+  background-color: aqua;
 }

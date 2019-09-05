@@ -12,8 +12,7 @@ class Game {
   startGame(players) {
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.createPlayers(players);
-    // $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
-     this.roundIncrement();
+    this.roundIncrement();
   }
   createPlayers(players) {
     for (var i = 0; i < players; i++) {
@@ -91,12 +90,18 @@ class Game {
     }
   }
   endGame() {
-
     this.playerList.sort(function (a, b) {
       return b.score - a.score;
     });
-    console.log(this.playerList);
 
     // Create modal showing all scores
+    var modal = $('<div>').addClass('modal');
+    for (var player = 0; player < this.playerList.length; ++player) {
+      var score = $('<span>').text('Player ' + (this.playerList[player].order+1) +
+                                   ' finished with ' + this.playerList[player].score +
+                                   'pts');
+      modal.append(score);
+    }
+    $('.game-container').after(modal);
   }
 }
