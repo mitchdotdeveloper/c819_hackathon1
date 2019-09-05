@@ -5,7 +5,7 @@ class Game {
     this.currentPlayer = 0;
     this.dice = [];
     this.diceSelected = null;
-
+    this.playerOrder = true;
     this.diceClicked = this.diceClicked.bind(this);
     this.playerBlockClicked = this.playerBlockClicked.bind(this);
   }
@@ -13,7 +13,7 @@ class Game {
   startGame(players) {
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.createPlayers(players);
-    $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
+    // $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
      this.roundIncrement();
   }
   createPlayers(players) {
@@ -61,26 +61,41 @@ class Game {
 
   roundIncrement() {
     this.roundCount++;
+    $('.dice-container').empty();
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.dice = [];
     this.createDice(9);
+    this.currentPlayer = 0;
+    this.diceSelected = null;
+    this.playerOrder = true;
+    this.playerTurnTracker();
   }
-  // nextPlayer() {
-  //   if ()
-  // }
-  loopPlayers() {
-    for (var i = 0; i < this.playerList.length; i++) {
-      this.playerTurnTracker(i);
+  playerTurnTracker() {
+    //debugger;
+    $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
+    if (this.currentPlayer === 4) {
+      this.playerOrder = false;
     }
-  }
-  playerTurnTracker(index) {
-    if (this.currentPlayer === '#p' + index) {
-      $('#p' + index).removeClass('avoid-clicks');
-      setTimeout(function() {
-        this.currentPlayer++;
-
-      }, 30000)
+    if (!this.playerOrder) {
+      this.currentPlayer--;
+      $('#p' + this.currentPlayer).removeClass('avoid-clicks');
+      if (this.currentPlayer === 0) {
+        this.playerOrder = true;
+        if (this.roundCount === 10) {
+          this.endGame();
+        } else {
+          this.roundIncrement();
+        }
+      }
+    } else {
+      $('#p' + this.currentPlayer).removeClass('avoid-clicks');
+      this.currentPlayer++;
     }
+    // if (this.currentPlayer === 0) {
+      // $('#p' + index).removeClass('avoid-clicks');
+      // setTimeout(function() {
+      //   this.currentPlayer++;
+      // }, 30000)
   }
   endGame() {
     for (var i = 0; i < this.playerList.length; i++) {

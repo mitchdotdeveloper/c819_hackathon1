@@ -90,3 +90,7 @@ body {
 .pass {
   top: 5vh;
 }
+
+.avoid-clicks {
+  pointer-events: none;
+}
