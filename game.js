@@ -5,15 +5,15 @@ class Game {
     this.currentPlayer = 0;
     this.dice = [];
     this.diceSelected = null;
-
+    this.playerOrder = true;
     this.diceClicked = this.diceClicked.bind(this);
     this.playerBlockClicked = this.playerBlockClicked.bind(this);
   }
   startGame(players) {
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.createPlayers(players);
-    $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
-    this.roundIncrement();
+    // $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
+     this.roundIncrement();
   }
   createPlayers(players) {
     for (var i = 0; i < players; i++) {
@@ -60,36 +60,43 @@ class Game {
 
   roundIncrement() {
     this.roundCount++;
+    $('.dice-container').empty();
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.dice = [];
     this.createDice(9);
+    this.currentPlayer = 0;
+    this.diceSelected = null;
+    this.playerOrder = true;
+    this.playerTurnTracker();
   }
-  // nextPlayer() {
-  //   if ()
-  // }
-  loopPlayers() {
-    for (var i = 0; i < this.playerList.length; i++) {
-      this.playerTurnTracker(i);
+  playerTurnTracker() {
+    $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
+    if (this.currentPlayer === 4) {
+      this.playerOrder = false;
     }
-  }
-  playerTurnTracker(index) {
-    if (this.currentPlayer === '#p' + index) {
-      $('#p' + index).removeClass('avoid-clicks');
-      setTimeout(function() {
-        this.currentPlayer++;
-
-      }, 30000)
+    if (!this.playerOrder) {
+      this.currentPlayer--;
+      $('#p' + this.currentPlayer).removeClass('avoid-clicks');
+      if (this.currentPlayer === 0) {
+        this.playerOrder = true;
+        if (this.roundCount === 10) {
+          this.endGame();
+        } else {
+          this.roundIncrement();
+        }
+      }
+    } else {
+      $('#p' + this.currentPlayer).removeClass('avoid-clicks');
+      this.currentPlayer++;
     }
   }
   endGame() {
-    for (var i = 0; i < this.playerList.length; i++) {
-      var temp = this.playerList[i];
-      if (this.playerList[i].score < this.playerList[i+1].score) {
-        this.playerList[i] = this.playerList[i+1];
-        this.playerList[i+1] = temp;
-      }
-      var scoreDiv = $('<div>');
-      scoreDiv.text();
-    }
+
+    this.playerList.sort(function (a, b) {
+      return b.score - a.score;
+    });
+    console.log(this.playerList);
+
+    // Create modal showing all scores
   }
 }
