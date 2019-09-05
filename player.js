@@ -12,7 +12,6 @@ class Player {
     this.gameHandler = gameHandler;
 
     this.clickHandler = this.clickHandler.bind(this);
-    // this.isValid = this.isValid.bind(this);
   }
 
   // future method to create board on DOM using jQuery
@@ -46,11 +45,10 @@ class Player {
   }
 
   isValid (dice, pos) {
-    // debugger;
     var row = parseInt(pos[0]);
     var column = parseInt(pos[1]);
 
-    if (this.playerBoard[row][column] != 0) {
+    if (this.playerBoard[row][column] !== 0) {
       return false;
     }
 
@@ -83,10 +81,6 @@ class Player {
     this.playerBoard[row][column] = dice;
     return true;
   }
-
-  // takes the clickedDice and checks if it can fit into board
-  // If it can fit, check if the dice color matches player color
-  // If matches, add score by the amount the dice value was
   playerScoreIncrement(die) {
     if (die.randomColor === this.color) {
       this.score += die.randomNumber;
