@@ -1,10 +1,10 @@
 class Player {
   constructor(order, gameHandler) {
     this.playerBoard = [
-      [1, 2, 3, 4, 5],
-      [6, 7, 8, 9, 10],
-      [11, 12, 13, 14, 15],
-      [16, 17, 18, 19, 20]
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0]
     ];
     this.score = 0;
     this.color = null;
@@ -12,6 +12,7 @@ class Player {
     this.gameHandler = gameHandler;
 
     this.clickHandler = this.clickHandler.bind(this);
+    // this.isValid = this.isValid.bind(this);
   }
 
   // future method to create board on DOM using jQuery
@@ -42,6 +43,45 @@ class Player {
 
   storeClickedDice() {
 
+  }
+
+  isValid (dice, pos) {
+    // debugger;
+    var row = parseInt(pos[0]);
+    var column = parseInt(pos[1]);
+
+    if (this.playerBoard[row][column] != 0) {
+      return false;
+    }
+
+    if (row !== 0 && this.playerBoard[row-1][column] !== 0) {
+      if (this.playerBoard[row-1][column].randomColor === dice.randomColor ||
+          this.playerBoard[row-1][column].randomNumber === dice.randomNumber) {
+        return false;
+      }
+    }
+    if (row !== this.playerBoard.length-1 && this.playerBoard[row+1][column] !== 0) {
+      if (this.playerBoard[row+1][column].randomColor === dice.randomColor ||
+        this.playerBoard[row+1][column].randomNumber === dice.randomNumber) {
+        return false;
+      }
+    }
+
+    if (column !== 0 && this.playerBoard[row][column-1] !== 0) {
+      if (this.playerBoard[row][column-1].randomColor === dice.randomColor ||
+        this.playerBoard[row][column-1].randomNumber === dice.randomNumber) {
+        return false;
+      }
+    }
+    if (column !== this.playerBoard[row].length-1 && this.playerBoard[row][column+1] !== 0) {
+      if (this.playerBoard[row][column+1].randomColor === dice.randomColor ||
+        this.playerBoard[row][column+1].randomNumber === dice.randomNumber) {
+        return false;
+      }
+    }
+
+    this.playerBoard[row][column] = dice;
+    return true;
   }
 
   // takes the clickedDice and checks if it can fit into board
