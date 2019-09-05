@@ -10,17 +10,23 @@ class Game {
     this.diceClicked = this.diceClicked.bind(this);
     this.playerBlockClicked = this.playerBlockClicked.bind(this);
     this.turnsCompleted = 0;
+    this.playerColorArray = ['blue', 'red', 'green', 'yellow', 'purple'];
   }
   startGame(players) {
     $('.round > .current-round').text('Round ' + this.roundCount);
+    this.shuffleColors(this.playerColorArray);
     this.createPlayers(players);
     this.roundIncrement();
     $('.pass').click(this.pass.bind(this));
   }
+  pickRandomColor(arr) {
+    var randomColor = arr.pop();
+    return randomColor;
+  }
   createPlayers(players) {
     for (var i = 0; i < players; i++) {
       this.playerList.push(new Player(i, this.playerBlockClicked));
-      this.playerList[i].randomColor();
+      this.playerList[i].randomColor(this.playerColorArray);
       this.playerList[i].createBoard();
     }
   }
@@ -66,6 +72,21 @@ class Game {
     this.diceSelected = null;
   }
 
+  shuffleColors(arr) {
+    var currentIndex = arr.length,
+        temporaryValue,
+        randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = arr[currentIndex];
+      arr[currentIndex] = arr[randomIndex];
+      arr[randomIndex] = temporaryValue;
+    }
+    console.log(arr);
+    return arr;
+  }
   roundIncrement() {
     this.roundCount++;
     $('.dice-container').empty();
