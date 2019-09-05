@@ -1,5 +1,9 @@
 # c819_hackathon1
 
+[Figma](https://www.figma.com/file/M6hb4jcQcdWYGeztXWO0cQ/Hackathon---Sagrada?node-id=0%3A1)
+
+[MeisterTask](https://www.meistertask.com/app/project/z6WmxH5l/hackathon-sagrada)
+
 # complete the project assigned to your group.  All projects MUST be in OOP
 
 - 1 person fork this repo.
