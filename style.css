@@ -1,0 +1,196 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./images/colormix.png");
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-size: contain;
+  background-repeat: repeat-y;
+}
+
+.game-container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.player-board {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 40vh;
+  width: 40vw;
+  background-color: rgba(255, 255, 255, 0.774);
+  border-radius: 7px;
+}
+
+.board-block {
+  height: 9.5vh;
+  width: 7vw;
+  font-size: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color:black;
+  border-radius: 7px;
+}
+
+.dice-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 15vh;
+  width: 50vw;
+  background-color: rgba(0, 0, 0, 0.363);
+  border-radius: 7px;
+}
+.dice-block{
+  position: relative;
+}
+.dice-block, .dice-block > img {
+  height: 10vh;
+  width: 5vw;
+  border-radius: 7px;
+}
+.game-logo{
+  height: 45%;
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+}
+
+.current-round {
+  font-size: 5.5vmin;
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.button {
+font-size: 2vmin;
+height: 7%;
+width: 12%;
+margin-top: 30px;
+font-weight: bold;
+font-family: 'Ubuntu', sans-serif;
+border-radius: 7px;
+background-color: white;
+opacity: 0.9;
+}
+
+button:hover {
+  background-color: #f3fe7e;
+}
+
+#p0 {
+  top:0;
+  left:0;
+}
+
+#p1 {
+  top:0;
+  right:0;
+}
+
+#p2 {
+  bottom:0;
+  left: 0;
+}
+
+#p3 {
+  bottom:0;
+  right:0;
+}
+
+.round, .pass {
+  justify-self: flex-start;
+  position: absolute;
+  top: 0;
+}
+
+.pass {
+  top: 5vh;
+}
+
+.avoid-clicks {
+  pointer-events: none;
+}
+
+.modal {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  color: white;
+  position: absolute;
+  border: 2px solid white;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 45vh;
+  width: 60vw;
+  background-image: url(./images/SagradaBoardGame.gif);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 20px 20px 25px 1px #0ff,
+              -20px -20px 25px 1px rgb(128, 250, 159);
+}
+
+.modalContent > span:nth-child(1) {
+  font-size: 7vmin;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.modalContent {
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: opacity 1s linear;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 4vmin;
+  font-weight: 900;
+  color: black;
+  position: absolute;
+  border: 2px solid white;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 45vh;
+  width: 45vw;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.showScores {
+  font-size: 4vmin;
+  height: 22%;
+  width: 22%;
+  margin-top: 50px;
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 7px;
+  background-color: white;
+  opacity: 0.85;
+}
+
+.current-player {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.show-border {
+  border: 5px solid yellow;
+}
