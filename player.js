@@ -14,7 +14,6 @@ class Player {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
-  // future method to create board on DOM using jQuery
   createBoard() {
     var board = $('<div>').addClass('player-board').attr('id', 'p'+this.order);
     for (var row = 0; row < 4; ++row) {
