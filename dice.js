@@ -40,8 +40,6 @@ class Dice {
   }
 
   clickHandler (event) {
-    // $(event.currentTarget).css("border", "5px yellow solid");
-
     this.gameHandler(this,event);
   }
 }

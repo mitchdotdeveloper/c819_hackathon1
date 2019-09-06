@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.roundCount = 0; // start at 0 if we have a set up phase. start at 1 if we're going right into it.
+    this.roundCount = 0;
     this.playerList = [];
     this.currentPlayer = 0;
     this.dice = [];
@@ -12,6 +12,7 @@ class Game {
     this.turnsCompleted = 0;
     this.playerColorArray = ['blue', 'red', 'green', '#f7be16', 'purple'];
   }
+
   startGame(players) {
     $('.round > .current-round').text('Round ' + this.roundCount);
     this.shuffleColors(this.playerColorArray);
@@ -19,10 +20,7 @@ class Game {
     this.roundIncrement();
     $('.pass').click(this.pass.bind(this));
   }
-  pickRandomColor(arr) {
-    var randomColor = arr.pop();
-    return randomColor;
-  }
+
   createPlayers(players) {
     for (var i = 0; i < players; i++) {
       this.playerList.push(new Player(i, this.playerBlockClicked));
@@ -30,6 +28,7 @@ class Game {
       this.playerList[i].createBoard();
     }
   }
+
   createDice(numberOfDice) {
     for (var i = 0; i < numberOfDice; i++) {
       this.dice.push(new Dice(this.diceClicked));
@@ -40,7 +39,6 @@ class Game {
   }
 
   diceClicked(diceObject,diceElement) {
-    console.log(this.diceSelected);
     if(this.diceElement != null) {
       $(this.diceElement.currentTarget).removeClass("show-border");
     }
@@ -64,7 +62,6 @@ class Game {
         boardTarget.text(this.diceSelected.randomNumber);
         this.playerTurnTracker();
         } else {
-          console.log('invalid move');
           return;
         }
     }
@@ -84,9 +81,9 @@ class Game {
       arr[currentIndex] = arr[randomIndex];
       arr[randomIndex] = temporaryValue;
     }
-    console.log(arr);
     return arr;
   }
+
   roundIncrement() {
     this.roundCount++;
     $('.dice-container').empty();
@@ -99,6 +96,7 @@ class Game {
     this.turnsCompleted = 0;
     this.playerTurnTracker();
   }
+
   playerTurnTracker() {
     $('#p0, #p1, #p2, #p3').addClass('avoid-clicks');
     $('#p0, #p1, #p2, #p3').css({
@@ -126,31 +124,43 @@ class Game {
       border: '8px solid ' + this.playerList[this.currentPlayer].color
       })
     }
+
   pass() {
     this.playerTurnTracker();
   }
+
+  reset() {
+    this.roundCount = 0;
+    this.playerList = [];
+    this.playerColorArray = ['blue', 'red', 'green', '#f7be16', 'purple'];
+    $('.dice-container').nextAll('.player-board').remove();
+    this.startGame(4);
+    $('.modal').addClass('hidden');
+    $('.game-container').removeClass('avoid-clicks');
+  }
+
   endGame() {
     this.playerList.sort(function (a, b) {
       return b.score - a.score;
     });
-
-    // Create modal showing all scores
     var modal = $('<div>').addClass('modal');
     var modalShowContent = $('<div>').addClass('modalContent hidden');
     var showScoreButton = $('<button>').addClass('showScores').text('Show Scores');
+    var resetButton = $('<button>').addClass('resetButton').text('Play Again');
     modal.append(showScoreButton);
     showScoreButton.click(function () {
       modalShowContent.removeClass('hidden');
     })
     for (var player = 0; player < this.playerList.length; ++player) {
       var score = $('<span>').text('Player ' + (this.playerList[player].order+1) +
-                                   ' finished with ' + this.playerList[player].score +
+                                   ' finished ' + (player+1) + 'st with ' + this.playerList[player].score +
                                    'pts');
       modalShowContent.append(score);
     }
     modal.append(modalShowContent);
+    modalShowContent.append(resetButton);
+    resetButton.click(this.reset.bind(this));
     $('.game-container').after(modal);
     $('.game-container').addClass('avoid-clicks');
   }
-
 }

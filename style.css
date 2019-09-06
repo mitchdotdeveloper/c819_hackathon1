@@ -141,8 +141,7 @@ button:hover {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   box-shadow: 20px 20px 25px 1px #0ff,
-              -20px -20px 25px 1px rgb(128, 250, 159)
-  /* background-color: aqua; */
+              -20px -20px 25px 1px rgb(128, 250, 159);
 }
 
 .modalContent > span:nth-child(1) {
