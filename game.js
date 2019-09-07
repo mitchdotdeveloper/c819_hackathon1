@@ -9,6 +9,7 @@ class Game {
     this.playerOrder = true;
     this.diceClicked = this.diceClicked.bind(this);
     this.playerBlockClicked = this.playerBlockClicked.bind(this);
+    this.passClick = $('.pass').click(this.pass.bind(this));
     this.turnsCompleted = 0;
     this.playerColorArray = ['blue', 'red', 'green', '#f7be16', 'purple'];
   }
@@ -18,7 +19,6 @@ class Game {
     this.shuffleColors(this.playerColorArray);
     this.createPlayers(players);
     this.roundIncrement();
-    $('.pass').click(this.pass.bind(this));
   }
 
   createPlayers(players) {
